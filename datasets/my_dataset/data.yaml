@@ -1,0 +1,14 @@
+train: "C:/Users/Kenan/PycharmProjects/YoloTraining/datasets/my_dataset/images/train"
+val:   "C:/Users/Kenan/PycharmProjects/YoloTraining/datasets/my_dataset/images/val"
+names:
+  - Bolt
+  - Frame
+  - Wheel
+  - Wheel Support
+  - Wrench
+  - Box
+  - Flange
+  - Nut
+  - Support
+  - Table
+  - Washer
