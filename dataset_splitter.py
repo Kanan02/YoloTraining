@@ -28,7 +28,6 @@ for file_name in os.listdir(SOURCE_IMAGES):
             print(f"Warning: no .txt label for {file_name}, skipping...")
             continue
 
-        # Find which classes appear in this image
         class_ids = set()
         with open(label_path, "r") as lf:
             for line in lf:
@@ -36,52 +35,51 @@ for file_name in os.listdir(SOURCE_IMAGES):
                 if not line:
                     continue
                 parts = line.split()
-                class_id = int(parts[0])  # YOLO format -> first number is class_id
+                class_id = int(parts[0])
                 class_ids.add(class_id)
 
-        # Store info
+
         all_images.append({
             "filename": file_name,
             "class_ids": class_ids
         })
 
-# 3) Build a map: class_id -> list of image indices
 class_to_imgs = defaultdict(list)
 for i, img_info in enumerate(all_images):
     for c in img_info["class_ids"]:
         class_to_imgs[c].append(i)
 
-assignment = [None] * len(all_images)  # "train" or "val" for each image
+assignment = [None] * len(all_images)
 
-# 4) Stratified split: for each class, try to place images in train/val
+
 classes_list = list(class_to_imgs.keys())
-random.shuffle(classes_list)  # randomize the order we process classes
+random.shuffle(classes_list)
 
 for c in classes_list:
     img_indices = class_to_imgs[c]
-    random.shuffle(img_indices)  # random order of images for this class
+    random.shuffle(img_indices)
 
     n = len(img_indices)
     if n == 0:
         continue
 
-    # ideal counts
+
     train_target = int(n * TRAIN_RATIO)
-    val_target   = n - train_target  # the rest go to val
+    val_target   = n - train_target
 
     used_train = 0
     used_val   = 0
 
     for idx in img_indices:
         if assignment[idx] is not None:
-            # this image is already assigned by another class
+
             if assignment[idx] == "train":
                 used_train += 1
             elif assignment[idx] == "val":
                 used_val += 1
             continue
 
-        # not assigned yet, so let's place it
+
         if used_train < train_target:
             assignment[idx] = "train"
             used_train += 1
@@ -89,12 +87,11 @@ for c in classes_list:
             assignment[idx] = "val"
             used_val += 1
 
-# 5) Fallback: if any image remains unassigned (e.g. empty label?), assign to train
+
 for i, subset in enumerate(assignment):
     if subset is None:
         assignment[i] = "train"
 
-# 6) Copy files to final train/val folders
 for i, img_info in enumerate(all_images):
     subset = assignment[i]
     img_file = img_info["filename"]

@@ -1,6 +1,5 @@
 /new_images/
 /new_labels/
-/raw_images/
-/raw_labels/
-/datasets/my_dataset/
-/unused_images/
+/datasets/my_dataset/images
+/datasets/my_dataset/labels
+

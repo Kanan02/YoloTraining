@@ -6,11 +6,10 @@ def main():
         data="C:/Users/Kenan/PycharmProjects/YoloTraining/datasets/my_dataset/data.yaml",
         epochs=50,
         imgsz=640,
-        project="runs",       # where to save training runs
+        project="runs",
         name="detect-train",
     )
 
-    # 3) The 'results' object contains training details
     print("Training completed!")
     print("Check out:", results)
 

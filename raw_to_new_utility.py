@@ -1,7 +1,6 @@
 import os
 import shutil
 
-# 1) Adjust these paths to your setup:
 LABELS_DIR = r"raw_labels"          # Folder containing .txt files
 SOURCE_IMAGE_DIR = r"raw_images"    # Root folder of your original images (may have subfolders)
 DEST_IMAGES_DIR = r"new_images"  # Where matched images will be copied
