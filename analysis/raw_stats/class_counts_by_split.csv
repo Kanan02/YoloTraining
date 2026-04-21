@@ -1,0 +1,34 @@
+split,class_name,instances
+train,Bolt,115
+train,Frame,223
+train,Wheel,400
+train,Wheel Support,547
+train,Wrench,129
+train,Box,321
+train,Flange,153
+train,Nut,490
+train,Support,23
+train,Table,24
+train,Washer,137
+val,Bolt,27
+val,Frame,36
+val,Wheel,77
+val,Wheel Support,129
+val,Wrench,25
+val,Box,63
+val,Flange,32
+val,Nut,98
+val,Support,6
+val,Table,7
+val,Washer,22
+total,Bolt,142
+total,Frame,259
+total,Wheel,477
+total,Wheel Support,676
+total,Wrench,154
+total,Box,384
+total,Flange,185
+total,Nut,588
+total,Support,29
+total,Table,31
+total,Washer,159

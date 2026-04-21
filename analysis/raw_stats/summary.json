@@ -1,0 +1,67 @@
+{
+  "total_images": 1500,
+  "train_images": 1268,
+  "val_images": 232,
+  "total_instances": 3084,
+  "train_instances": 2562,
+  "val_instances": 522,
+  "avg_objects_per_image": 2.056,
+  "median_objects_per_image": 1.0,
+  "min_objects_per_image": 1,
+  "max_objects_per_image": 20,
+  "unique_resolutions": 37,
+  "most_common_resolutions": [
+    {
+      "width": 1536,
+      "height": 2048,
+      "count": 771
+    },
+    {
+      "width": 1600,
+      "height": 1200,
+      "count": 491
+    },
+    {
+      "width": 2048,
+      "height": 1536,
+      "count": 177
+    },
+    {
+      "width": 5712,
+      "height": 4284,
+      "count": 28
+    },
+    {
+      "width": 1095,
+      "height": 632,
+      "count": 1
+    },
+    {
+      "width": 1036,
+      "height": 775,
+      "count": 1
+    },
+    {
+      "width": 1287,
+      "height": 842,
+      "count": 1
+    },
+    {
+      "width": 1215,
+      "height": 815,
+      "count": 1
+    },
+    {
+      "width": 1362,
+      "height": 823,
+      "count": 1
+    },
+    {
+      "width": 1416,
+      "height": 818,
+      "count": 1
+    }
+  ],
+  "avg_bbox_area_norm": 0.105116,
+  "median_bbox_area_norm": 0.025221
+}

@@ -1,0 +1,10 @@
+{
+  "model_weights": "C:/Users/Kenan/PycharmProjects/YoloTraining/runs/detect-train20/weights/best.pt",
+  "split": "val",
+  "prediction_conf_for_export": 0.001,
+  "precision_recall_score_threshold": 0.25,
+  "global_precision_at_0_5": 0.6268115942028986,
+  "global_recall_at_0_5": 0.6628352490421456,
+  "global_AP50": 0.7022507108713448,
+  "global_AP50_95": 0.454925631692435
+}
