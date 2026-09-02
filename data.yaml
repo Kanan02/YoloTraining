@@ -1,0 +1,19 @@
+# ImDUSTRY5-1.5K - object detection dataset
+# Paths are relative to this file, so the repository works wherever it is cloned.
+
+path: .
+train: images/train
+val: images/val
+
+names:
+  0: Bolt
+  1: Frame
+  2: Wheel
+  3: Wheel Support
+  4: Wrench
+  5: Box
+  6: Flange
+  7: Nut
+  8: Support
+  9: Table
+  10: Washer

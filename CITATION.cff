@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite the Zenodo deposit below."
+title: "ImDUSTRY5-1.5K: A Public Benchmark Dataset for Industrial Object Detection in Real Production Environments"
+type: dataset
+authors:
+  - family-names: Gurbanov
+    given-names: Kanan
+    email: kanan.gurbanov@ufaz.az
+    affiliation: "Azerbaijan State Oil and Industry University; ICube Laboratory UMR 7357, University of Strasbourg; Icam site de Strasbourg-Europe"
+  - family-names: Gardashova
+    given-names: Latafat
+    affiliation: "Azerbaijan State Oil and Industry University"
+  - family-names: Bobenrieth
+    given-names: Cedric
+    affiliation: "ICube Laboratory UMR 7357, University of Strasbourg; Icam site de Strasbourg-Europe"
+  - family-names: Al Makdessi
+    given-names: Nathalie
+    affiliation: "ICube Laboratory UMR 7357, University of Strasbourg; Icam site de Strasbourg-Europe"
+  - family-names: Chabrol
+    given-names: Grégoire
+    affiliation: "ICube Laboratory UMR 7357, University of Strasbourg; Icam site de Strasbourg-Europe"
+  - family-names: Rima
+    given-names: Samy
+    affiliation: "Human-IST Institute, University of Fribourg"
+  - family-names: Amhaz
+    given-names: Rabih
+    email: amhaz@unistra.fr
+    affiliation: "ICube Laboratory UMR 7357, University of Strasbourg; Icam site de Strasbourg-Europe"
+version: "v2"
+date-released: "2026-08-12"
+doi: 10.5281/zenodo.19045784
+url: "https://doi.org/10.5281/zenodo.19045784"
+repository-code: "https://github.com/Kanan02/YoloTraining"
+license: CC-BY-4.0
+keywords:
+  - object detection
+  - industrial vision
+  - manufacturing
+  - assembly line
+  - bounding box annotation
+  - small object detection
+abstract: >-
+  1,500 colour photographs recorded during routine work on an assembly line at
+  Icam site de Strasbourg-Europe, annotated with 13,313 axis-aligned bounding
+  boxes over eleven categories of components, hand-held tools and workstation
+  structures. Released with the annotation protocol, a fixed train and
+  validation partition, and a trained detector checkpoint. The DOI is the
+  concept DOI and resolves to the newest version; this record describes v2.
