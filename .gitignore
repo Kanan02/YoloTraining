@@ -1,5 +1,18 @@
-/new_images/
-/new_labels/
-/datasets/my_dataset/images
-/datasets/my_dataset/labels
+# Working files — kept locally, not part of the dataset release
+_archive/
+reannotation/
+runs/
+.venv/
+.idea/
+__pycache__/
+*.pyc
 
+# COCO-pretrained checkpoints: downloaded on demand by train.py.
+# The released dataset weights live in weights/ and are tracked.
+/*.pt
+per_class_metrics.csv
+
+# Ultralytics label caches. They are pickles holding absolute paths from the
+# machine that built them, so they are wrong everywhere else and are rebuilt on
+# first run. Never commit them.
+*.cache
