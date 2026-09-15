@@ -111,43 +111,42 @@ flagging because they are not what the class names suggest:
 
 ## Baseline results
 
-> **These are the v2 numbers.** The three baselines are being retrained on v3;
-> this section, the checkpoint in `weights/` and the tables in `docs/` will be
-> replaced when those runs finish.
-
-Validation split, `imgsz=960`, seed 0.
+Validation split, `imgsz=960`, seed 0. For the YOLO rows, precision and recall
+are taken at the confidence threshold that maximises mean F1, as Ultralytics
+reports them; for Faster R-CNN, at a score threshold of 0.25.
 
 | Model | Precision | Recall | mAP@0.5 | mAP@0.5:0.95 |
 |---|---|---|---|---|
-| YOLOv8n | 0.801 | 0.693 | 0.762 | 0.564 |
-| YOLOv8s | 0.796 | 0.703 | 0.747 | 0.560 |
-| Faster R-CNN MobileNetV3-320 | 0.567 | 0.356 | 0.490 | 0.329 |
+| YOLOv8n | 0.780 | 0.732 | 0.783 | 0.563 |
+| YOLOv8s | 0.784 | 0.748 | 0.763 | 0.562 |
+| Faster R-CNN MobileNetV3-320 | 0.631 | 0.323 | 0.499 | 0.321 |
 
-The two YOLO scales land within 0.015 mAP of each other — close enough that the
-gap is inside single-seed variation, so treat them as comparable rather than
-ranked. YOLOv8s buys a little recall, YOLOv8n a little precision.
+The two YOLO scales are 0.020 apart at mAP@0.5 and 0.001 apart at mAP@0.5:0.95 —
+close enough that the gap is inside single-seed variation, so treat them as
+comparable rather than ranked. YOLOv8s is slightly ahead on precision and recall,
+YOLOv8n on mAP@0.5.
 
 The Faster R-CNN row is a cross-architecture reference point, not a fair fight:
 it ran 50 epochs at batch 16 in its native `torchvision` configuration against
-100 epochs at batch 8 and `imgsz=960` for the YOLO runs, and its 320-pixel input
-leaves most fasteners here spanning a handful of pixels. Same split, same
+up to 100 epochs at batch 8 and `imgsz=960` for the YOLO runs, and its 320-pixel
+input leaves most fasteners here spanning a handful of pixels. Same split, same
 hardware, same evaluation code; everything else differs.
 
 ### Per-class, YOLOv8s
 
 | Class | Precision | Recall | AP@0.5 | AP@0.5:0.95 |
 |---|---|---|---|---|
-| Wheel Support | 0.919 | 0.844 | 0.885 | 0.653 |
-| Table | 0.725 | 0.800 | 0.795 | 0.641 |
-| Wheel | 0.832 | 0.783 | 0.788 | 0.617 |
-| Support | 1.000 | 0.580 | 0.783 | 0.628 |
-| Nut | 0.791 | 0.734 | 0.782 | 0.536 |
-| Box | 0.862 | 0.717 | 0.767 | 0.629 |
-| Frame | 0.741 | 0.696 | 0.738 | 0.596 |
-| Flange | 0.819 | 0.663 | 0.736 | 0.560 |
-| Washer | 0.711 | 0.562 | 0.660 | 0.436 |
-| Wrench | 0.614 | 0.783 | 0.658 | 0.492 |
-| Bolt | 0.746 | 0.567 | 0.629 | 0.377 |
+| Table | 0.824 | 0.943 | 0.962 | 0.704 |
+| Wheel Support | 0.855 | 0.863 | 0.873 | 0.643 |
+| Wheel | 0.819 | 0.796 | 0.801 | 0.623 |
+| Nut | 0.761 | 0.763 | 0.770 | 0.525 |
+| Box | 0.859 | 0.733 | 0.766 | 0.632 |
+| Frame | 0.782 | 0.737 | 0.731 | 0.617 |
+| Flange | 0.824 | 0.678 | 0.725 | 0.553 |
+| Support | 0.892 | 0.600 | 0.723 | 0.511 |
+| Wrench | 0.601 | 0.843 | 0.705 | 0.513 |
+| Washer | 0.660 | 0.680 | 0.673 | 0.444 |
+| Bolt | 0.751 | 0.597 | 0.669 | 0.418 |
 
 `Washer` and `Bolt` remain the hardest categories: both are small, low-contrast
 and easily confused with `Nut` at the captured resolution.

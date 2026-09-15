@@ -16,7 +16,7 @@ CLASSES = ["Bolt", "Frame", "Wheel", "Wheel Support", "Wrench", "Box",
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--weights", default=str(ROOT / "weights" / "yolov8s_v2.pt"))
+    ap.add_argument("--weights", default=str(ROOT / "weights" / "yolov8s_v3.pt"))
     ap.add_argument("--imgsz", type=int, default=960)
     ap.add_argument("--batch", type=int, default=8)
     ap.add_argument("--device", default="0")

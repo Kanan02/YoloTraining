@@ -59,10 +59,20 @@ and 5712×4284 from smartphones, and 1600×1200 from the Pupil Labs Neon scene c
 
 ## Baselines
 
-All three reference detectors are being retrained on v3 with the published
-configurations. Until those runs finish, the checkpoint in `weights/` and the
-per-class tables in `docs/` are still the v2 ones; they will be replaced in a
-following commit.
+All three reference detectors were retrained on v3 with the published
+configurations. The checkpoint in `weights/` is now `yolov8s_v3.pt`, and the
+per-class tables in `docs/` are the v3 ones. Validation scores, as precision /
+recall / mAP@0.5 / mAP@0.5:0.95:
+
+| Model | v2 | v3 |
+|---|---|---|
+| YOLOv8n | 0.801 / 0.693 / 0.762 / 0.564 | 0.780 / 0.732 / 0.783 / 0.563 |
+| YOLOv8s | 0.796 / 0.703 / 0.747 / 0.560 | 0.784 / 0.748 / 0.763 / 0.562 |
+| Faster R-CNN MobileNetV3-320 | 0.567 / 0.356 / 0.490 / 0.329 | 0.631 / 0.323 / 0.499 / 0.321 |
+
+No mAP value moved by more than 0.021. The two columns are measured on validation
+subsets that differ by five images and 74 boxes, so they are close but not
+strictly comparable.
 
 ## Label audit
 

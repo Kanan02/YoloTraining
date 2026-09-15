@@ -26,8 +26,7 @@ authors:
     given-names: Rabih
     email: amhaz@unistra.fr
     affiliation: "ICube Laboratory UMR 7357, University of Strasbourg; Icam site de Strasbourg-Europe"
-version: "v2"
-date-released: "2026-08-12"
+version: "v3"
 doi: 10.5281/zenodo.19045784
 url: "https://doi.org/10.5281/zenodo.19045784"
 repository-code: "https://github.com/Kanan02/YoloTraining"
@@ -40,9 +39,11 @@ keywords:
   - bounding box annotation
   - small object detection
 abstract: >-
-  1,500 colour photographs recorded during routine work on an assembly line at
-  Icam site de Strasbourg-Europe, annotated with 13,313 axis-aligned bounding
-  boxes over eleven categories of components, hand-held tools and workstation
-  structures. Released with the annotation protocol, a fixed train and
-  validation partition, and a trained detector checkpoint. The DOI is the
-  concept DOI and resolves to the newest version; this record describes v2.
+  1,467 colour images recorded during routine work on an assembly line at Icam
+  site de Strasbourg-Europe, with hand-held smartphones and with the scene camera
+  of a head-mounted eye tracker, annotated with 12,868 axis-aligned bounding boxes
+  over eleven categories of components, hand-held tools and workstation
+  structures. Released with the annotation protocol, a fixed train and validation
+  partition, and a trained detector checkpoint. The DOI is the concept DOI and
+  resolves to the newest version; this record describes v3, in which incidental
+  faces are blurred.
