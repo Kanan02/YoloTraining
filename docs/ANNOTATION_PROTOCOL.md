@@ -170,9 +170,9 @@ R4 (minimum size) rather than estimated, so these images are densely but **not
 exhaustively** annotated. This is a documented departure from R0 and must be
 stated in any paper describing the release.
 
-Extent of the affected subset, measured on the released labels: **60 images
-(4.0% of the collection) carry 20 or more `Bolt`, `Nut` or `Washer` boxes, and
-those images account for 2,635 boxes — 19.8% of all annotation.** 50 of them are
+Extent of the affected subset, measured on the released v3 labels: **56 images
+(3.8% of the collection) carry 20 or more `Bolt`, `Nut` or `Washer` boxes, and
+those images account for 2,510 boxes — 19.5% of all annotation.** 46 of them are
 in the training split and 10 in validation. The densest single image carries 88
 boxes. Recall measured against this subset is pessimistic, and the subset is not
 suitable material for counting tasks.

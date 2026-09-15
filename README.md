@@ -7,13 +7,12 @@ collected in a real production environment. It is designed for reproducible
 evaluation of object detectors under realistic industrial conditions — clutter,
 partial occlusion, scale variation and non-uniform illumination.
 
-The DOI above is the **concept DOI** — it always resolves to the newest version.
-This repository matches **v2**
-([10.5281/zenodo.20053210](https://doi.org/10.5281/zenodo.20053210), published
-12 August 2026). Do not use **v1**
-([10.5281/zenodo.19045785](https://doi.org/10.5281/zenodo.19045785)): it carries
-the superseded first annotation pass, which is systematically incomplete
-(3,084 boxes against the 13,313 below).
+The DOI above is the **concept DOI** — it always resolves to the newest version on
+Zenodo. This repository holds **v3**, which is being prepared for Zenodo: it blurs
+faces that appeared incidentally in 33 images and removes 33 screen captures, as
+described in [`docs/CHANGES_v3.md`](docs/CHANGES_v3.md). Do not use **v1** or
+**v2**: both contain the images before anonymisation, and v1 also carries the
+superseded first annotation pass (3,084 boxes).
 
 Companion resource for the paper:
 
@@ -26,13 +25,14 @@ Real Production Environments**
 
 ```
 data.yaml              dataset definition
-images/train  (1268)   images/val  (232)
+images/train  (1240)   images/val  (227)
 labels/train           labels/val           YOLO format
 splits/split.json      the official split, by file stem
 weights/               released YOLOv8s checkpoint
-docs/                  annotation protocol and label provenance
+docs/                  annotation protocol, label provenance, v3 changes
 train.py               reproduce a baseline
 evaluate.py            score a checkpoint on the validation split
+audit_labels.py        re-run the label integrity checks
 ```
 
 ## Quick start
@@ -41,36 +41,38 @@ evaluate.py            score a checkpoint on the validation split
 pip install ultralytics
 python train.py                     # YOLOv8s baseline
 python evaluate.py                  # score the released weights
+python audit_labels.py              # check every label file
 ```
 
 `train.py` fixes the seed and every setting that affects the result, so a clean
-run reproduces the numbers below on the official split.
+run reproduces the baseline numbers on the official split.
 
 ## Dataset at a glance
 
 | | |
 |---|---|
-| Images | 1,500 |
-| Annotated instances | **13,313** |
+| Images | 1,467 |
+| Annotated instances | **12,868** |
 | Classes | 11 |
-| Train / val images | 1,268 / 232 |
-| Train / val instances | 10,943 / 2,370 |
-| Objects per image | mean 8.88, median 6, max 88 |
-| Distinct resolutions | 37 |
+| Train / val images | 1,240 / 227 |
+| Train / val instances | 10,572 / 2,296 |
+| Objects per image | mean 8.77, median 6, max 88 |
+| Sources | 976 smartphone photographs, 491 frames from a Pupil Labs Neon scene camera |
+| Resolutions | 1536×2048, 2048×1536, 5712×4284 (smartphone); 1600×1200 (eye tracker) |
 
 ### Class distribution
 
 | Class | Train | Val | Total |
 |---|---|---|---|
-| Nut | 3,793 | 889 | 4,682 |
-| Wheel Support | 1,664 | 327 | 1,991 |
-| Wheel | 1,311 | 235 | 1,546 |
-| Box | 1,064 | 226 | 1,290 |
-| Bolt | 771 | 224 | 995 |
-| Flange | 808 | 187 | 995 |
-| Washer | 691 | 128 | 819 |
-| Frame | 434 | 79 | 513 |
-| Wrench | 360 | 60 | 420 |
+| Nut | 3,555 | 843 | 4,398 |
+| Wheel Support | 1,621 | 320 | 1,941 |
+| Wheel | 1,300 | 235 | 1,535 |
+| Box | 1,064 | 221 | 1,285 |
+| Flange | 796 | 187 | 983 |
+| Bolt | 734 | 216 | 950 |
+| Washer | 672 | 122 | 794 |
+| Frame | 433 | 78 | 511 |
+| Wrench | 350 | 59 | 409 |
 | Support | 23 | 10 | 33 |
 | Table | 24 | 5 | 29 |
 
@@ -88,7 +90,8 @@ not as independently accepted ground truth. Validation candidates were reviewed
 by a human against the written class definitions and inclusion rules, with
 incorrect classes and boxes corrected or removed. Automated integrity checks
 were subsequently applied to all label files to detect invalid coordinates,
-zero-area or duplicate boxes, extreme aspect ratios and boundary-clipping issues.
+zero-area or duplicate boxes, extreme aspect ratios and boundary-clipping issues;
+`audit_labels.py` repeats them.
 
 YOLO detection format, one row per instance, coordinates normalised to the image:
 
@@ -101,12 +104,16 @@ the treatment of dense fastener bins are specified in
 [`docs/ANNOTATION_PROTOCOL.md`](docs/ANNOTATION_PROTOCOL.md). Two rules are worth
 flagging because they are not what the class names suggest:
 
-- **`Wrench`** is the powered nutrunner used on the line, not a hand wrench. The
-  hand wrenches on the pegboard are unlabelled background.
+- **`Wrench`** is the blue powered nutrunner used on the line, not a hand wrench.
+  The hand wrenches on the pegboard are unlabelled background.
 - **`Wheel`** is the castor wheel component in any colour; conveyor rollers,
   furniture castors and the red emergency-stop button are not annotated.
 
 ## Baseline results
+
+> **These are the v2 numbers.** The three baselines are being retrained on v3;
+> this section, the checkpoint in `weights/` and the tables in `docs/` will be
+> replaced when those runs finish.
 
 Validation split, `imgsz=960`, seed 0.
 
@@ -160,8 +167,8 @@ partition, and a random 80/20 draw will not reproduce them.
 - Bins holding loose fasteners cannot be annotated exhaustively at the captured
   resolution. Instances that stay visually separable are boxed individually; the
   rest are left unlabelled under the minimum-size rule rather than guessed. The
-  60 images carrying 20 or more `Bolt`/`Nut`/`Washer` boxes (4.0% of the images,
-  19.8% of all annotation) are the ones affected — recall measured on them is
+  56 images carrying 20 or more `Bolt`/`Nut`/`Washer` boxes (3.8% of the images,
+  19.5% of all annotation) are the ones affected — recall measured on them is
   pessimistic, and they are not suitable for counting tasks. See rule R9 in the
   annotation protocol.
 - Annotation was reviewed against the written protocol by a second annotator on

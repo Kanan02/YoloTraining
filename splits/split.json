@@ -1,33 +1,5 @@
 {
  "train": [
-  "1",
-  "12",
-  "13",
-  "14",
-  "15",
-  "16",
-  "17",
-  "18",
-  "2",
-  "21",
-  "22",
-  "23",
-  "24",
-  "25",
-  "26",
-  "27",
-  "28",
-  "29",
-  "31",
-  "32",
-  "33",
-  "34",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
   "IMG_037376",
   "IMG_037377",
   "IMG_037378",
@@ -1270,11 +1242,6 @@
   "frame_0970_233.174"
  ],
  "val": [
-  "11",
-  "19",
-  "20",
-  "3",
-  "30",
   "IMG_037380",
   "IMG_037386",
   "IMG_037388",
@@ -1503,5 +1470,5 @@
   "frame_0910_219.886",
   "frame_0989_237.966"
  ],
- "source": "recovered from analysis/yolov8n_metrics/val_gt_coco.json = the split used for the MTAP baselines"
+ "source": "recovered from analysis/yolov8n_metrics/val_gt_coco.json = the split used for the MTAP baselines; v3 (September 2026) removes the 33 PNG screen captures (28 train, 5 val)"
 }
