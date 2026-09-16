@@ -27,6 +27,7 @@ authors:
     email: amhaz@unistra.fr
     affiliation: "ICube Laboratory UMR 7357, University of Strasbourg; Icam site de Strasbourg-Europe"
 version: "v3"
+date-released: "2026-09-16"
 doi: 10.5281/zenodo.19045784
 url: "https://doi.org/10.5281/zenodo.19045784"
 repository-code: "https://github.com/Kanan02/YoloTraining"

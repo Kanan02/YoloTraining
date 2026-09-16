@@ -8,7 +8,8 @@ evaluation of object detectors under realistic industrial conditions — clutter
 partial occlusion, scale variation and non-uniform illumination.
 
 The DOI above is the **concept DOI** — it always resolves to the newest version on
-Zenodo. This repository holds **v3**, which is being prepared for Zenodo: it blurs
+Zenodo. This repository holds **v3**, published on Zenodo as
+[10.5281/zenodo.22791206](https://doi.org/10.5281/zenodo.22791206): it blurs
 faces that appeared incidentally in 33 images and removes 33 screen captures, as
 described in [`docs/CHANGES_v3.md`](docs/CHANGES_v3.md). Do not use **v1** or
 **v2**: both contain the images before anonymisation, and v1 also carries the
